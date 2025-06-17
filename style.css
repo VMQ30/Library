@@ -12,7 +12,7 @@
     --lightorange: #FFE3BB;
     --midorange: #FFA673;
     --darkorange:#FF4F0F;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 
@@ -133,15 +133,6 @@ span{
     grid-template-columns: repeat(auto-fit, 430px);
     gap: 20px;
     grid-template-rows: minmax(50px, auto);
-}
-
-.card-grid *{
-    width: 430px;
-    height: 250px;
-    background-color: white;
-    border-radius: 20px;
-    border: none;
-    box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 
 .modal{
@@ -298,4 +289,106 @@ form{
 
 .hidden{
     visibility: hidden;
+}
+
+
+
+
+
+.card{
+    width: 430px;
+    height: 250px;
+    background-color: white;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    padding: 25px;
+}
+
+.card-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.card h3{
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+}
+
+.card-header p{
+    font-style: italic;
+    color:rgb(100, 116, 139);
+}
+
+.read-status{
+    padding: 0.375rem 0.75rem;
+    background-color: #FFE3BB;
+    border:2px solid;
+    border-color:#FFA673;
+    border-radius:20px;
+}
+
+.card-info{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.card-button{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.remove-book{
+    background-color: #FFE3BB;
+    border:2px solid;
+    border-color:var(--midorange);
+    margin-top: 25px;
+    width:45%;
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+    cursor:pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    background-color: all 0.3s;
+    color:var(--darkorange);
+}
+
+.change-status{
+    background-color: rgb(243, 243, 243);
+    border:2px solid;
+    border-color:rgb(225, 225, 225);
+    margin-top: 25px;
+    width:45%;
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+    cursor:pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    background-color: all 0.3s;
+}
+
+.remove-book:hover{
+    background-color: #ffd8a1;
+}
+.remove-book:active{
+    background-color: #ffc87c;
+}
+
+.change-status:hover{
+    background-color: rgb(232, 232, 232);
+}
+.change-status:active{
+    background-color: rgb(217, 217, 217);
 }
