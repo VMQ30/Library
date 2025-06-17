@@ -35,7 +35,8 @@
                 <select class = "select">
                     <option>All Books</option>
                     <option>Read</option>
-                    <option>Unread</option>
+                    <option>Currently Reading</option>
+                    <option>Not Read</option>
                 </select>
             </div>
 
@@ -45,8 +46,67 @@
         
 
         <div class = "card-grid">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
 
+            <div></div><div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+
+            <div></div><div></div>
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div>
+            <div></div><div></div><div></div>
         </div>
     </main>
+
+    <div class = "modal-screen">
+        <div class = "modal">
+            <div class = modal-header>
+                <h2 class = "modal-title">
+                    Add New Book
+                </h2>
+
+                <button class = "close">X</button>
+            </div>
+            <form action="">
+                
+                <div class = "input-form">
+                    <p>Book Title *</p>
+                    <input type = "text" id = "book-title" class = "book-title" required placeholder="e.g. To Kill a Mockingbird">
+                </div>
+
+                <div class = "input-form">
+                    <p>Author *</p>
+                    <input type = "text" id = "author" class = "author" required placeholder = "e.g. Harper Lee">
+                </div>
+
+                <div class = "input-form">
+                    <p>Number of Pages *</p>
+                    <input type = "number" id = "num-pages" class = "num-pages" min = 1 required placeholder="e.g 204">
+                </div>
+
+                <div class = "input-form">
+                    <p>Reading Status</p>
+                    <select id = "status" class = "status">
+                        <option>Read</option>
+                        <option>Currently Reading</option>
+                        <option>Not Read</option>
+                    </select>
+                </div>
+
+                <div class = "button-modal">
+                    <button type="reset" class = "reset">Clear</button>
+                    <button type="submit" class = "submit">Add Book</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
