@@ -208,7 +208,7 @@ form{
     caret-color: var(--darkcolor);
     color: var(--darkcolor);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: all 0.3s;
+    transition: border-color 0.3s, box-shadow 0.3s;
     width: 100%;
     border-color:#c1cccb;
     margin-bottom: 20px;
@@ -241,7 +241,7 @@ form{
     color: var(--darkcolor);
     cursor:pointer;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: all 0.3s;
+    transition: border-color 0.3s, box-shadow 0.3s;
     width: 100%;
 }
 
@@ -270,7 +270,7 @@ form{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 0.95rem;
     font-weight: 600;
-    transition: all 0.3s;
+    background-color: all 0.3s;
 }
 
 .reset{
@@ -294,4 +294,8 @@ form{
 }
 .submit:active{
     background-color: #005e5a;
+}
+
+.hidden{
+    visibility: hidden;
 }
