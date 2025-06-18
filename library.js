@@ -76,7 +76,6 @@ function getBookInfo(){
         bookList.push(book);
 
         localStorage.setItem("bookList", JSON.stringify(bookList));
-        console.log(bookList);
         addBookCard();
     });
 }
@@ -91,7 +90,6 @@ function Book(title, author, numberOfPages, status){
 function addBookCard(){
     cardGrid.innerHTML = "";
     let bookListLength = bookList.length;
-    cardGrid.innerHTML = "";
     for(let i = 0; i<bookListLength; i++){
         let title = bookList[i].title;
         let author = bookList[i].author;
