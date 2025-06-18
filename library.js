@@ -19,10 +19,13 @@ openAndCloseModal();
 getBookInfo();
 addBookCard();
 removeBook();
+filterClick();
+filterBooksBySearchbar();
 
 console.log(bookList);
 
 //functions
+
 function removeBook(){
     let removeBookButton = document.querySelectorAll(".remove-book");
     removeBookButton.forEach ((remove) =>{
@@ -112,14 +115,97 @@ function addBookCard(){
                 </div>
 
                 <div class = 'card-button'>
-                    <button class = "change-status">Mark Unread</button>
+                    <button class = "change-status"></button>
                     <button class = "remove-book">Remove</button>
                 </div>
         `;
+
         book.setAttribute("data-index", [i]);
         cardGrid.appendChild(book);
+        styleStatus();
+        changeStatusButton();
     }
 }
-        
+
+function filterBooksBySearchbar(){
+    let search = document.getElementById("search-bar");
+
+    search.addEventListener("input", () =>{
+        let searchText = search.value.toLowerCase().trim();
+        let card = document.querySelectorAll(".card");
+
+        card.forEach((card) =>{
+            let title = card.querySelector("h3").textContent.toLowerCase().trim();
+            let author = card.querySelector(".card-header p").textContent.toLowerCase().trim();
+
+            if(title.includes(searchText) || author.includes(searchText)){
+                card.style.display = "block";
+            }
+
+            else{
+                card.style.display = "none";
+            }
+        })
+    })
+}
+
+function filterClick(){
+    let filterStatus = document.getElementById("select-status");
+    filterStatus.addEventListener("change", ()=>{
+        filterBooksByStatus();
+    })
+}
+
+function filterBooksByStatus(){
+    let card = document.querySelectorAll(".card");
+    let filterStatus = document.getElementById("select-status");
+    card.forEach((card) =>{
+        let status = card.querySelector(".read-status");
+
+        let statusText = status.textContent;
+        let filterText = filterStatus.value;
+        if (statusText == filterText || filterText == "All Books"){
+            console.log(filterText);
+            card.style.display = "block";
+        }
+        else if(statusText != filterText){
+            card.style.display = "none";
+        }
+
+    })
+}
+function changeStatusButton(){
+    let card = document.querySelectorAll(".card");
+    card.forEach((card) =>{
+        let status = card.querySelector(".read-status");
+        let changeButton = card.querySelector(".change-status");
+
+        if(status.textContent == "Read"){
+            changeButton.textContent = "Mark Unread";
+        }
+        if(status.textContent == "Not Read"){
+            changeButton.textContent = "Mark Read";
+        }
+    })
+}
+function styleStatus(){
+    let statusDiv = document.querySelectorAll(".read-status");
+    statusDiv.forEach( (stat) =>{
+        let statusText = stat.textContent;
+
+        if(statusText == "Read"){
+            stat.style.backgroundColor = "#deffe6";
+            stat.style.borderColor = "#93dba4";
+            stat.style.color = "#52a866";
+        }
+
+        if(statusText == "Not Read"){
+            stat.style.backgroundColor = "#faaaaa";
+            stat.style.borderColor ="#db6969";
+            stat.style.color = "#b53333";
+        }
+
+    });
+}
 
 
