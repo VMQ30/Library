@@ -32,14 +32,14 @@ function removeBook(){
 }
 function openAndCloseModal(){
     openModal.addEventListener("click", () =>{
-    modal.classList.remove("hidden");
+    modal.classList.add("hidden");
     })
     closeModal.addEventListener("click", () =>{
-        modal.classList.add("hidden");
+        modal.classList.remove("hidden");
     });
 
     outisdeModal.addEventListener("click", ()=>{
-        modal.classList.add("hidden");
+        modal.classList.remove("hidden");
     });
     modalBox.addEventListener("click", ()=>{
         event.stopPropagation();
@@ -69,17 +69,17 @@ function Book(title, author, numberOfPages, status){
 }
 
 function addBookCard(){
+    cardGrid.innerHTML = "";
     for(let i = 0; i<bookListLength; i++){
         let title = bookList[i].title;
         let author = bookList[i].author;
         let numberOfPages = bookList[i].numberOfPages;
-        let status = bookList.status;
+        let status = bookList[i].status;
         let dateAdded = new Date().toLocaleString('en-GB', {year: 'numeric', month: 'numeric', day: 'numeric'});
 
         let book = document.createElement("div");
         book.classList.add("card");
         book.innerHTML = `
-            <div class = "card">
                 <div class = "card-header">
                     <div>
                         <h3>${title}</h3>
@@ -97,10 +97,11 @@ function addBookCard(){
                     <button class = "change-status">Mark Unread</button>
                     <button class = "remove-book">Remove</button>
                 </div>
-            </div>
         `;
 
         cardGrid.appendChild(book);
     }
 }
+        
+
 
