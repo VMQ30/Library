@@ -1,6 +1,6 @@
 
 let modal = document.querySelector(".modal-screen");
-let outisdeModal = document.querySelector(".modal-screen");
+let outsideModal = document.querySelector(".modal-screen");
 let modalBox = document.querySelector(".modal");
 let openModal = document.getElementById("add-book");
 let closeModal = document.getElementById("close");
@@ -21,6 +21,7 @@ addBookCard();
 removeBook();
 filterClick();
 filterBooksBySearchbar();
+
 
 console.log(bookList);
 
@@ -52,7 +53,7 @@ function openAndCloseModal(){
         modal.classList.remove("hidden");
     });
 
-    outisdeModal.addEventListener("click", ()=>{
+    outsideModal.addEventListener("click", ()=>{
         modal.classList.remove("hidden");
     });
     modalBox.addEventListener("click", (event)=>{
@@ -67,7 +68,7 @@ function getBookInfo(){
         let numOfPages = numPagesText.value;
         let readingStatus = statusText.value;
 
-        if(!bookText || !bookAuthor || !numOfPages || !readingStatus){
+        if(!bookTitle || !bookAuthor || !numOfPages || !readingStatus){
             alert("Please Fill Out the Necessary Fields First");
             return;
         }
@@ -122,9 +123,12 @@ function addBookCard(){
 
         book.setAttribute("data-index", [i]);
         cardGrid.appendChild(book);
-        styleStatus();
-        changeStatusButton();
+        
     }
+
+    styleStatus();
+    changeStatusButton();
+    removeBook();
 }
 
 function filterBooksBySearchbar(){
@@ -180,14 +184,30 @@ function changeStatusButton(){
         let status = card.querySelector(".read-status");
         let changeButton = card.querySelector(".change-status");
 
-        if(status.textContent == "Read"){
-            changeButton.textContent = "Mark Unread";
-        }
-        if(status.textContent == "Not Read"){
-            changeButton.textContent = "Mark Read";
-        }
+        changeButton.textContent = (status.textContent == "Read") ? "Mark Unread" : "Mark Read";
+        
+        changeButton.addEventListener("click", ()=>{
+            let index = parseInt(card.getAttribute("data-index"));
+
+            if(status.textContent == "Read"){
+                status.textContent = "Not Read";
+                changeButton.textContent = "Mark Read";
+                bookList[index].status = "Not Read";
+            }
+            else{
+                status.textContent = "Read";
+                changeButton.textContent = "Mark Unread";
+                bookList[index].status = "Read";
+            }
+
+            localStorage.setItem("bookList", JSON.stringify(bookList));
+            styleStatus();
+        })
+
+        
     })
 }
+
 function styleStatus(){
     let statusDiv = document.querySelectorAll(".read-status");
     statusDiv.forEach( (stat) =>{
