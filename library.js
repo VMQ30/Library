@@ -13,21 +13,27 @@ let statusText = document.getElementById("status");
 
 let cardGrid = document.querySelector(".card-grid");
 
-let removeBookButton = document.querySelectorAll(".remove-book");
-
 let bookList = JSON.parse(localStorage.getItem("bookList")) || [];
-let bookListLength = bookList.length;
 
 openAndCloseModal();
 getBookInfo();
 addBookCard();
-
+removeBook();
 
 console.log(bookList);
 
 function removeBook(){
-    removeBookButton.addEventListener("click", () =>{
-        
+    let removeBookButton = document.querySelectorAll(".remove-book");
+    removeBookButton.forEach ((remove) =>{
+        remove.addEventListener("click", (event)=>{
+            let book = event.target.closest(".card");
+            let index = parseInt(book.getAttribute("data-index"));
+
+            bookList.splice(index, 1);
+            localStorage.setItem("bookList", JSON.stringify(bookList));
+            addBookCard();
+            removeBook()
+        })
     })
 }
 function openAndCloseModal(){
@@ -41,7 +47,7 @@ function openAndCloseModal(){
     outisdeModal.addEventListener("click", ()=>{
         modal.classList.remove("hidden");
     });
-    modalBox.addEventListener("click", ()=>{
+    modalBox.addEventListener("click", (event)=>{
         event.stopPropagation();
     })
 }
@@ -69,6 +75,8 @@ function Book(title, author, numberOfPages, status){
 }
 
 function addBookCard(){
+    cardGrid.innerHTML = "";
+    let bookListLength = bookList.length;
     cardGrid.innerHTML = "";
     for(let i = 0; i<bookListLength; i++){
         let title = bookList[i].title;
@@ -98,7 +106,7 @@ function addBookCard(){
                     <button class = "remove-book">Remove</button>
                 </div>
         `;
-
+        book.setAttribute("data-index", [i]);
         cardGrid.appendChild(book);
     }
 }
