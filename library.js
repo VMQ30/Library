@@ -39,7 +39,6 @@ function removeBook(){
                 bookList.splice(index, 1);
                 localStorage.setItem("bookList", JSON.stringify(bookList));
                 addBookCard();
-                removeBook()
             }
         })
     })
